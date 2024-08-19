@@ -32,5 +32,6 @@ def count_character(list_of_words):
                 result[char] = 1    # The character does not exist so init the count with 1
     return result
 
+
 if __name__ == "__main__":
     main()
