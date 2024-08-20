@@ -3,11 +3,11 @@ def main():
     book_path = "books/frankenstein.txt"
     book_text = get_book_contents(book_path)
 
-    # First line of the report
-    print(f"--- Begin report of {book_path} ---\n")
-
     # count all the words in book_text
     total_num_words = count_words(book_text)
+
+    # First line of the report
+    print(f"--- Begin report of {book_path} ---\n")
     print(f"This book has {total_num_words} total words\n")
 
     # Take the text from the book as a string (book_text) and return
@@ -22,6 +22,8 @@ def main():
 
     # Produce the report that itemises how many times each character was found
     print_character_report(list_of_char_dictionaries)
+
+    print("--- End report ---")
 
 def get_book_contents(path):
     with open(path) as fin:
