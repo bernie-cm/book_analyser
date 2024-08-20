@@ -3,13 +3,12 @@ def main():
     book_path = "books/frankenstein.txt"
     book_text = get_book_contents(book_path)
     # count all the words in book_text
-    total_words = count_words(book_text)
-    print(f"This book has {total_words} total words.")
+    total_num_words = count_words(book_text)
+    print(f"This book has {total_num_words} total words.")
 
-    '''Add a new function to your script that takes the text from the book as a string, 
-    and returns the number of times each character appears in the string. 
-    Convert any character to lowercase, we don't want duplicates.'''
-    char_dictionary = count_characters(total_words)
+    # Take the text from the book as a string (book_text) and return
+    # a dictionary with the number of times each character appears in the string.
+    char_dictionary = count_characters(book_text)
     print("Here is the character count")
     print(char_dictionary)
 
@@ -22,11 +21,15 @@ def count_words(text):
     list_of_words = text.split()
     return len(list_of_words)
 
-def count_characters(list_of_words):
+def count_characters(book_text):
+    # List comprehension to ensure all the words are lower case
+    words = [word.lower() for word in book_text.split()]
+
+    # Init an empty dictionary to capture all the letters and their number of occurrences
     result = {}
-    for word in list_of_words:
+    for word in words:
         for char in word:
-            if char.lower() in result:
+            if char in result:
                 result[char] += 1   # The character already exists so increase count by 1
             else:
                 result[char] = 1    # The character does not exist so init the count with 1
