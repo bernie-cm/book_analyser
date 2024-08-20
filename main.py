@@ -13,9 +13,13 @@ def main():
     # Take the text from the book as a string (book_text) and return
     # a dictionary with the number of times each character appears in the string.
     char_dictionary = count_characters(book_text)
-    print("Here is the character count")
-    print(char_dictionary)
 
+    # Conver the char_dictionary into a list of dictionaries, where each dictionary has
+    # as key the letter, and its value the number of times they occur, e.g. {'letter': 'p', 'num': 6121}
+    list_of_char_dictionaries = convert_dict_to_list(char_dictionary)
+
+    # Produce the report that itemises how many times each character was found
+    print_character_report(list_of_char_dictionaries)
 
 def get_book_contents(path):
     with open(path) as fin:
@@ -39,6 +43,9 @@ def count_characters(book_text):
                 result[char] = 1    # The character does not exist so init the count with 1
     return result
 
+def convert_dict_to_list(dictionary):
+    result = [{'letter': k, 'num': v} for k, v in dictionary.items() if k.isalpha()]
+    return result
 
 if __name__ == "__main__":
     main()
