@@ -1,4 +1,3 @@
-from pprint import pprint
 def main():
     # function to open the file and get the contents
     book_path = "books/frankenstein.txt"
