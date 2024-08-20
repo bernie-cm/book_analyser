@@ -2,6 +2,10 @@ def main():
     # function to open the file and get the contents
     book_path = "books/frankenstein.txt"
     book_text = get_book_contents(book_path)
+
+    # First line of the report
+    print(f"--- Begin report of {book_path} ---\n")
+
     # count all the words in book_text
     total_num_words = count_words(book_text)
     print(f"This book has {total_num_words} total words.")
