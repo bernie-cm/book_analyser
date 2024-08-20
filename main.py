@@ -1,3 +1,4 @@
+from pprint import pprint
 def main():
     # function to open the file and get the contents
     book_path = "books/frankenstein.txt"
@@ -8,7 +9,7 @@ def main():
 
     # count all the words in book_text
     total_num_words = count_words(book_text)
-    print(f"This book has {total_num_words} total words.")
+    print(f"This book has {total_num_words} total words\n")
 
     # Take the text from the book as a string (book_text) and return
     # a dictionary with the number of times each character appears in the string.
@@ -17,6 +18,8 @@ def main():
     # Conver the char_dictionary into a list of dictionaries, where each dictionary has
     # as key the letter, and its value the number of times they occur, e.g. {'letter': 'p', 'num': 6121}
     list_of_char_dictionaries = convert_dict_to_list(char_dictionary)
+    # Sort the dictionaries by the total number of occurrences from largest to smallest
+    list_of_char_dictionaries.sort(reverse=True, key=sort_on)
 
     # Produce the report that itemises how many times each character was found
     print_character_report(list_of_char_dictionaries)
@@ -46,6 +49,13 @@ def count_characters(book_text):
 def convert_dict_to_list(dictionary):
     result = [{'letter': k, 'num': v} for k, v in dictionary.items() if k.isalpha()]
     return result
+
+def print_character_report(list_of_dicts):
+    for dict in list_of_dicts:
+        print(f"The '{dict['letter']}' character was found {dict['num']} times")
+
+def sort_on(dictionary):
+    return dictionary['num']
 
 if __name__ == "__main__":
     main()
